@@ -1,0 +1,32 @@
+ul.social-network {
+    list-style: none;
+    padding: 0;
+}
+
+ul.social-network li {
+    display: inline;
+    margin: 0;
+    padding: 5px;
+
+}
+
+.fa {
+    font-size: 35pt;
+    color: white;
+    padding: 10px;
+}
+
+.fa-github:hover {
+    transition: 250ms;
+    color: #68EDC6;
+}
+
+.fa-envelope:hover {
+    transition: 250ms;
+    color: #D44D5C;
+}
+
+.fa-linkedin:hover {
+    transition: 250ms;
+    color: #53599A;
+}
