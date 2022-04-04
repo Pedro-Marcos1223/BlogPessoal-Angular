@@ -1,10 +1,13 @@
-#img-bg {
-    background-image: url(https://images5.alphacoders.com/532/thumb-1920-532559.jpg);
+.cyber {
+    background-image: url("../../assets/img/cyberbg.gif");
     height: 100vh;
+    width: 100vw;
     background-size: cover;
-    background-repeat: no-repeat;
-    -moz-transform: scaleX(-1);
--o-transform: scaleX(-1);
--webkit-transform: scaleX(-1);
-transform: scaleX(-1);
+    overflow-x: hidden;
+}
+
+.bg{
+    background-color: rgba(0, 0, 0, 0.704);
+    padding: 50px;
+    border-radius: 16px;
 }

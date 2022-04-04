@@ -1,0 +1,22 @@
+.bg-cyber {
+    background-image: url(../../assets/img/download.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fs-54 {
+    font-size: 54pt;
+}
+
+.fs-18 {
+    font-size: 18pt;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+
+body {
+    background-color: #151313;
+}

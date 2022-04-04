@@ -1,6 +1,13 @@
-#bgImg {
-    background-image: url(https://images5.alphacoders.com/532/thumb-1920-532559.jpg);
+.bullet {
+    background-image: url("../../assets/img/Techbullet.gif");
     height: 100vh;
+    width: 100vw;
     background-size: cover;
-    background-repeat: no-repeat;
 }
+
+.bg{
+    background-color: rgba(0, 0, 0, 0.704);
+    padding: 50px;
+    border-radius: 16px;
+}
+
