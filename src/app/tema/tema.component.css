@@ -5,3 +5,10 @@
 .fs-18 {
     font-size: 18pt;
 }
+
+.bg-tema{
+    background-color: black;
+    background-image: url(../../assets/img/lojinhatema.jpg);
+    background-size: 1330px 325px  ;
+    /* 1075px 325px */
+}

@@ -2,7 +2,7 @@
     background-image: url("../../assets/img/Techbullet.gif");
     height: 100vh;
     width: 100vw;
-    background-size: cover;
+    background-size: contain;
 }
 
 .bg{
