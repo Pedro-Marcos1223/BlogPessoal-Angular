@@ -48,14 +48,15 @@
                 <div class="tab-pane fade show active text-light" id="nav-todasAsPostagens" role="tabpanel"
                     aria-labelledby="nav-todasAsPostagens-tab">
 
-                    
+
                     <div class="card-columns text-dark">
                         <div class="card text-center" *ngFor="let card of listaPostagem">
                             <div class="card-body">
                                 <h5 class="card-title m-0">{{card.titulo}}</h5>
                                 <small class="text-muted ">Tema: {{card.tema.descricao}}</small>
                                 <p class="card-text mt-3">{{card.texto}}</p>
-                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às {{card.data | date: 'HH:mm'}}</small></p>
+                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
+                                        {{card.data | date: 'HH:mm'}}</small></p>
                                 <p class="card-text"><small class="text-muted">by: {{card.usuario.nome}}</small></p>
                             </div>
                         </div>
@@ -72,30 +73,35 @@
                                 <h5 class="card-title m-0">{{card.titulo}}</h5>
                                 <small class="text-muted ">Tema: {{card.tema.descricao}}</small>
                                 <p class="card-text mt-3">{{card.texto}}</p>
-                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às {{card.data | date: 'HH:mm'}}</small></p>
+                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
+                                        {{card.data | date: 'HH:mm'}}</small></p>
+
+                                <a [routerLink]="['/postagem-edit', card.id]" class="text-info mr-3">Editar</a>
+                                <a [routerLink]="['/postagem-delete', card.id]" class="text-danger">Deletar</a>
                             </div>
                         </div>
                     </div>
-                
+
                 </div>
 
                 <div class="tab-pane fade text-light" id="nav-postagensportema" role="tabpanel"
                     aria-labelledby="nav-postagensportema-tab">
-                
+
                     <div class="card-columns text-dark" *ngFor="let tema of listaTemas">
                         <div class="card text-center" *ngFor="let card of tema.postagem">
                             <div class="card-body">
                                 <h5 class="card-title m-0">{{card.titulo}}</h5>
                                 <p class="card-text mt-3">{{card.texto}}</p>
-                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às {{card.data | date: 'HH:mm'}}</small></p>
+                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
+                                        {{card.data | date: 'HH:mm'}}</small></p>
                                 <p class="card-text"><small class="text-muted">by: {{card.usuario.nome}}</small></p>
                             </div>
                         </div>
                     </div>
-                
-                
-                
-                
+
+
+
+
                 </div>
             </div>
 
