@@ -8,7 +8,9 @@
 
 .bg-tema{
     background-color: black;
-    background-image: url(../../assets/img/lojinhatema.jpg);
-    background-size: 1330px 325px  ;
+    background-image: url(../../assets/img/Cybercity.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100vw 60vh  ;
     /* 1075px 325px */
 }
