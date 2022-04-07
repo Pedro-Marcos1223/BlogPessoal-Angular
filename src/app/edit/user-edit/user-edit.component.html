@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="container">
+
+
+        <div class="row d-flex align-items-center">
+
+
+            <div class="col-md-12 bg mt-5 text-dark">
+                <h1 class="text-center mb-3">Atualizar Usuario</h1>
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6">
+
+
+                        <form>
+                            <div class="form-group">
+                                <label for="">Nome</label>
+                                <input [(ngModel)]="user.nome" type="text" class="form-control"
+                                    placeholder="Digite seu nome" name="nome">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input [(ngModel)]="user.usuario" type="text" class="form-control"
+                                    placeholder="Digite seu e-mail" name="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Link da foto de perfil</label>
+                                <input [(ngModel)]="user.foto" type="text" class="form-control"
+                                    placeholder="Link da sua foto de perfil" name="foto">
+                            </div>
+
+
+
+                            <div class="d-flex justify-content-around">
+                                <button class="btn btn-danger w-50" routerLink="/inicio">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <form>
+                            <div class="form-group">
+                                <label for="">Senha</label>
+                                <input (input)='confirmSenha($event)' type="password" class="form-control"
+                                    placeholder="Digite sua senha">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Confirmar Senha</label>
+                                <input [(ngModel)]='user.senha' type="password" class="form-control"
+                                    placeholder="Repita sua senha" name="confirmSenha">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Tipo de usuario</label>
+                                <select name="tipo" id="tipo" class="form-control" (change)="tipoUser($event)">
+                                    <option selected disabled value="">Selecione um tipo de usuario</option>
+                                    <option value="normal">Adiministrador</option>
+                                    <option value="adm">Padrão</option>
+                                </select>
+
+                                <div class="d-flex justify-content-around">
+                                    <button class="btn btn-success w-50 mt-3" (click)="atualizar()">Atualizar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
