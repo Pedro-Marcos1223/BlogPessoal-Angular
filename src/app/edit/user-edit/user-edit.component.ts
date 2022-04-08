@@ -22,8 +22,8 @@ export class UserEditComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private alertas: AlertasService
-
+    private alertas: AlertasService,
+    public auth1: AuthService
   ) { }
 
   ngOnInit(){
@@ -61,6 +61,7 @@ export class UserEditComponent implements OnInit {
           environment.foto = ""
           environment.token = ""
           environment.id = 0
+          environment.tipo = ""
           this.router.navigate(["/entrar"])
           this.alertas.showAlertInfo("Usuario atualizado com sucesso!")
         },

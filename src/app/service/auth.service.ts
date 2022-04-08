@@ -18,7 +18,7 @@ export class AuthService {
     headers: new HttpHeaders().set("Authorization", environment.token),
   };
 
-  refreshToken(){
+  refreshToken() {
     this.token = {
       headers: new HttpHeaders().set("Authorization", environment.token),
     };
@@ -36,17 +36,27 @@ export class AuthService {
     return this.http.put<User>("http://localhost:8080/usuarios/atualizar", user, this.token)
   }
 
-  getByIdUser(id: number): Observable<User>{
-    return this.http.get<User>(`http://localhost:8080/usuarios/${id}`, this.token  )
+  getByIdUser(id: number): Observable<User> {
+    return this.http.get<User>(`http://localhost:8080/usuarios/${id}`, this.token)
   }
 
-  logado(){
+  logado() {
     let ok: boolean = false
 
-    if(environment.token != ""){
+    if (environment.token != "") {
       ok = true
     }
-    
+
+    return ok
+  }
+
+  adm(){
+    let ok: boolean = false
+
+    if (environment.tipo == "adm") {
+      ok = true
+    }
+
     return ok
   }
 }

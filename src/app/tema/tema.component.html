@@ -40,7 +40,7 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Descrições</th>
-                    <th scope="col" class="text-right">Modificações</th>
+                    <th  scope="col" class="text-right">Modificações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,8 +48,8 @@
                     <th>{{tema.id}}</th>
                     <td>{{tema.descricao}}</td>
                     <td class="d-flex justify-content-end">
-                      <button [routerLink]="['/tema-edit', tema.id]" class="btn btn-secondary mr-3">Editar</button>
-                      <button [routerLink]="['/tema-delete', tema.id]" class="btn btn-danger">Apagar</button>
+                      <button *ngIf="auth.adm()" [routerLink]="['/tema-edit', tema.id]" class="btn btn-secondary mr-3">Editar</button>
+                      <button *ngIf="auth.adm()" [routerLink]="['/tema-delete', tema.id]" class="btn btn-danger">Apagar</button>
                     </td>
                   </tr>
                 </tbody>
