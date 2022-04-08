@@ -19,6 +19,10 @@ export class TemaService {
     return this.http.get<Tema[]>("http://localhost:8080/tema", this.token)
   }
 
+  getByNomeTema(descricao: string): Observable<Tema[]>{
+    return this.http.get<Tema[]>(`http://localhost:8080/tema/descricao/${descricao}`, this.token)
+  }
+
   postTema(tema: Tema): Observable<Tema>{
     return this.http.post<Tema>("http://localhost:8080/tema", tema, this.token)
   }

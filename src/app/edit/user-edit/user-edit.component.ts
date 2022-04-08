@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -21,6 +22,7 @@ export class UserEditComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
+    private alertas: AlertasService
 
   ) { }
 
@@ -49,7 +51,7 @@ export class UserEditComponent implements OnInit {
 
 
     if (this.user.senha != this.confirmarSenha) {
-      alert("As senhas estão diferentes...")
+      this.alertas.showAlertWarning("As senhas estão diferentes...")
 
     } else {
       this.authService.atualizar(this.user).subscribe({
@@ -60,11 +62,11 @@ export class UserEditComponent implements OnInit {
           environment.token = ""
           environment.id = 0
           this.router.navigate(["/entrar"])
-          alert("Usuario atualizado com sucesso!")
+          this.alertas.showAlertInfo("Usuario atualizado com sucesso!")
         },
         error: erro => {
           if (erro.status == 400) {
-            alert("Favor preencher os campos caso queira atualizar.")
+            this.alertas.showAlertWarning("Favor preencher os campos caso queira atualizar.")
           }
         },
       });

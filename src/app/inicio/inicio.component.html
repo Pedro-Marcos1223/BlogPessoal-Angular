@@ -1,112 +1,129 @@
+<div class="container-fluid bg-cyber vh-100 vw-100">
+    <div class="container">
 
+        <div class="row d-flex align-items-center vh-100">
 
-    <div class="container-fluid bg-cyber vh-100 vw-100">
-        <div class="container">
+            <div class="col-md-6 text-light">
 
-            <div class="row d-flex align-items-center vh-100">
-
-                <div class="col-md-6 text-light">
-
-                    <div>
-                        <h1 class="fs-54">Bem vindo ao CyberGeek!</h1>
-                        <h5 class="fs-18">Fala alguma coisa legal que você goste ai!</h5>
-                    </div>
-
-
-                    <div class="">
-                        <button class="btn btn-outline-light w-40 mr-4" data-toggle="modal"
-                            data-target="#novaPostagem">Nova postagem </button>
-
-                        <a class="btn btn-outline-light w-40" href="#postagens">Ver Postagens</a>
-                    </div>
-
+                <div>
+                    <h1 class="fs-54">Bem vindo ao CyberGeek!</h1>
+                    <h5 class="fs-18">Fala alguma coisa legal que você goste ai!</h5>
                 </div>
+
+
+                <div class="">
+                    <button class="btn btn-outline-light w-40 mr-4" data-toggle="modal" data-target="#novaPostagem">Nova
+                        postagem </button>
+
+                    <a class="btn btn-outline-light w-40" href="#postagens">Ver Postagens</a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid vh-100 vw-100 " id="postagens">
+    <div class="container">
+        <nav class="mb-5">
+            <div class="nav nav-tabs d-flex justify-content-center " id="nav-tab" role="tablist">
+                <a class="nav-link active font-weight-bold text-light" id="nav-todasAsPostagens-tab" data-toggle="tab"
+                    href="#nav-todasAsPostagens" role="tab" aria-controls="nav-todasAsPostagens"
+                    aria-selected="true">Todas as Postagens</a>
+
+                <a class="nav-link font-weight-bold text-light" id="nav-minhasPostagens-tab" data-toggle="tab"
+                    href="#nav-minhasPostagens" role="tab" aria-controls="nav-minhasPostagens"
+                    aria-selected="false">Minhas Postagens</a>
+
+                <a class="nav-link font-weight-bold text-light " id="nav-postagensportema-tab" data-toggle="tab"
+                    href="#nav-postagensportema" role="tab" aria-controls="nav-postagensportema"
+                    aria-selected="false">Postagens por tema</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active text-light" id="nav-todasAsPostagens" role="tabpanel"
+                aria-labelledby="nav-todasAsPostagens-tab">
+
+                <div class="row d-flex justify-content-center mt-5 mb-5">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="titulo"
+                                placeholder="Digite um titulo para pesquisar postagens sobre." [(ngModel)]="tituloPost"
+                                (keyup)="findByTituloPostagem()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-columns text-dark">
+                    <div class="card text-center" *ngFor='let card of listaPostagem | orderBy : key : reverse'>
+                        <div class="card-body">
+                            <h5 class="card-title m-0">{{card.titulo}}</h5>
+                            <small class="text-muted ">Tema: {{card.tema.descricao}}</small>
+                            <p class="card-text mt-3">{{card.texto}}</p>
+                            <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
+                                    {{card.data | date: 'HH:mm'}}</small></p>
+                            <p class="card-text"><small class="text-muted">by: {{card.usuario.nome}}</small></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane fade text-light" id="nav-minhasPostagens" role="tabpanel"
+                aria-labelledby="nav-minhasPostagens-tab">
+
+                <div class="card-columns text-dark">
+                    <div class="card text-center" *ngFor="let card of user.postagem | orderBy : key : reverse">
+                        <div class="card-body">
+                            <h5 class="card-title m-0">{{card.titulo}}</h5>
+                            <small class="text-muted ">Tema: {{card.tema.descricao}}</small>
+                            <p class="card-text mt-3">{{card.texto}}</p>
+                            <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
+                                    {{card.data | date: 'HH:mm'}}</small></p>
+
+                            <a [routerLink]="['/postagem-edit', card.id]" class="text-info mr-3">Editar</a>
+                            <a [routerLink]="['/postagem-delete', card.id]" class="text-danger">Deletar</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane fade text-light" id="nav-postagensportema" role="tabpanel"
+                aria-labelledby="nav-postagensportema-tab">
+
+                <div class="row d-flex justify-content-center mt-5 mb-5">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="titulo"
+                                placeholder="Digite um tema para pesquisar postagens por tema." [(ngModel)]="descricaoTema"
+                                (keyup)="findByDescricaoTema()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-columns text-dark" *ngFor="let tema of listaTemas">
+                    <div class="card text-center" *ngFor="let card of tema.postagem | orderBy : key : reverse">
+                        <div class="card-body">
+                            <h5 class="card-title m-0">{{card.titulo}}</h5>
+                            <p class="card-text mt-3">{{card.texto}}</p>
+                            <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
+                                    {{card.data | date: 'HH:mm'}}</small></p>
+                            <p class="card-text"><small class="text-muted">by: {{card.usuario.nome}}</small></p>
+                        </div>
+                    </div>
+                </div>
+
+
 
 
             </div>
         </div>
+
     </div>
-
-    <div class="container-fluid vh-100 vw-100 " id="postagens">
-        <div class="container">
-            <nav class="mb-5">
-                <div class="nav nav-tabs d-flex justify-content-center " id="nav-tab" role="tablist">
-                    <a class="nav-link active font-weight-bold text-light" id="nav-todasAsPostagens-tab"
-                        data-toggle="tab" href="#nav-todasAsPostagens" role="tab" aria-controls="nav-todasAsPostagens"
-                        aria-selected="true">Todas as Postagens</a>
-
-                    <a class="nav-link font-weight-bold text-light" id="nav-minhasPostagens-tab" data-toggle="tab"
-                        href="#nav-minhasPostagens" role="tab" aria-controls="nav-minhasPostagens"
-                        aria-selected="false">Minhas Postagens</a>
-
-                    <a class="nav-link font-weight-bold text-light " id="nav-postagensportema-tab" data-toggle="tab"
-                        href="#nav-postagensportema" role="tab" aria-controls="nav-postagensportema"
-                        aria-selected="false">Postagens por tema</a>
-                </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active text-light" id="nav-todasAsPostagens" role="tabpanel"
-                    aria-labelledby="nav-todasAsPostagens-tab">
-
-
-                    <div class="card-columns text-dark">
-                        <div class="card text-center" *ngFor="let card of listaPostagem">
-                            <div class="card-body">
-                                <h5 class="card-title m-0">{{card.titulo}}</h5>
-                                <small class="text-muted ">Tema: {{card.tema.descricao}}</small>
-                                <p class="card-text mt-3">{{card.texto}}</p>
-                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
-                                        {{card.data | date: 'HH:mm'}}</small></p>
-                                <p class="card-text"><small class="text-muted">by: {{card.usuario.nome}}</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="tab-pane fade text-light" id="nav-minhasPostagens" role="tabpanel"
-                    aria-labelledby="nav-minhasPostagens-tab">
-
-                    <div class="card-columns text-dark">
-                        <div class="card text-center" *ngFor="let card of user.postagem">
-                            <div class="card-body">
-                                <h5 class="card-title m-0">{{card.titulo}}</h5>
-                                <small class="text-muted ">Tema: {{card.tema.descricao}}</small>
-                                <p class="card-text mt-3">{{card.texto}}</p>
-                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
-                                        {{card.data | date: 'HH:mm'}}</small></p>
-
-                                <a [routerLink]="['/postagem-edit', card.id]" class="text-info mr-3">Editar</a>
-                                <a [routerLink]="['/postagem-delete', card.id]" class="text-danger">Deletar</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="tab-pane fade text-light" id="nav-postagensportema" role="tabpanel"
-                    aria-labelledby="nav-postagensportema-tab">
-
-                    <div class="card-columns text-dark" *ngFor="let tema of listaTemas">
-                        <div class="card text-center" *ngFor="let card of tema.postagem">
-                            <div class="card-body">
-                                <h5 class="card-title m-0">{{card.titulo}}</h5>
-                                <p class="card-text mt-3">{{card.texto}}</p>
-                                <p class="card-text"><small class="text-muted">{{card.data | date: 'dd/MM/yyyy'}} às
-                                        {{card.data | date: 'HH:mm'}}</small></p>
-                                <p class="card-text"><small class="text-muted">by: {{card.usuario.nome}}</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-            </div>
-
-        </div>
-    </div>
+</div>
 
 
 
